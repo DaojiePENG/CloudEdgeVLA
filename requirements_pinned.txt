@@ -1,0 +1,39 @@
+# CloudEdgeVLA pinned dependencies
+# Snapshot of the environment used for the released training and evaluation runs
+# (2026-07-22). Prefer `pip install -e .` plus SETUP.md unless you need exact pins.
+
+# === Core dependencies (version sensitive) ===
+protobuf==5.29.2            # must be >=5.26.0 or TensorFlow raises a runtime_version ImportError
+tensorflow==2.15.0
+tensorflow-datasets==4.9.3
+tensorflow-metadata==1.14.0 # must stay on 1.14.x for protobuf 5.x compatibility
+
+# === PyTorch ===
+torch==2.3.1
+torchvision==0.18.1
+torchaudio==2.3.1
+
+# === Transformers ===
+# Parallel action decoding requires the OpenVLA-OFT fork pinned in pyproject.toml:
+#   transformers @ git+https://github.com/moojink/transformers-openvla-oft.git
+transformers==4.40.1
+huggingface-hub>=0.20.0
+
+# === Scientific computing ===
+numpy==1.24.3
+scipy==1.11.4               # must be <1.14 to avoid ufunc compatibility errors
+opencv-python==4.11.0.86    # OpenCV 5.x requires NumPy >=2, which conflicts with this stack
+
+# === ML libraries ===
+timm==0.9.10
+dlimp==0.0.1
+wandb==0.28.0
+draccus==0.8.0
+
+# === Optional ===
+# tensorflow-graphics==2021.12.3
+# tensorflow-addons==0.23.0
+# tensorflow-io-gcs-filesystem==0.37.1
+
+# === Install ===
+# pip install -r requirements_pinned.txt
